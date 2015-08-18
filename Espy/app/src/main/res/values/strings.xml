@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Espy</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="name">Name</string>
+    <string name="home_address">Home Address</string>
+    <string name="Work_Address">Work Address</string>
+    <string name="submit">Submit</string>
+    <string name="school_Address">School Address</string>
+    <string name="nameInstru">Ex. John Doe.</string>
+    <string name="addressInstru">Ex. 123 Main St New York, NY 10001.</string>
+    <string name="search">Search</string>
+</resources>
