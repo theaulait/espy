@@ -8,7 +8,13 @@
     <string name="Work_Address">Work Address</string>
     <string name="submit">Submit</string>
     <string name="school_Address">School Address</string>
-    <string name="nameInstru">Ex. John Doe.</string>
-    <string name="addressInstru">Ex. 123 Main St New York, NY 10001.</string>
+    <string name="nameInstru">Ex. John Doe</string>
+    <string name="addressInstru">Ex. 123 Main St Albany, NY 11101</string>
     <string name="search">Search</string>
+    <string name="venueList">My List</string>
+    <string name="navigateMyList">My List</string>
+    <string name="title_activity_my_list">MyListActivity</string>
+    <string name="title_activity_background">BackgroundActivity</string>
+    <string name="title_activity_custom_background">CustomBackgroundActivity</string>
+    <string name="welcome_instruction">Espy keeps track of recommended places from family and friends. Just search, get results and save it onto your list of venues.</string>
 </resources>

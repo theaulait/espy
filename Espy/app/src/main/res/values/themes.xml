@@ -1,12 +1,19 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="AppTheme.Base"/>
-
-      <style name="AppTheme.Base" parent="Theme.AppCompat">
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <item name="searchViewStyle">@style/MySearchViewStyle</item>
         <item name="colorPrimary">#6CCECB</item>
         <item name="colorPrimaryDark">#218C8D</item>
         <item name="colorAccent">#F9E559</item>
+    </style>
+
+    <style name="instructions" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+
+    <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
+
     </style>
 
     <style name="EditTextStandard" parent="Widget.Design.TextInputLayout">
@@ -27,7 +34,8 @@
 
     <style name="TextViewStart" parent="Widget.AppCompat.AutoCompleteTextView">
         <item name="android:gravity">center</item>
-        <item name="android:textSize">5sp</item>
+        <item name="android:textSize">3sp</item>
     </style>
+
 
 </resources>
