@@ -29,7 +29,7 @@ public class CustomBackgroundActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         setContentView(R.layout.activity_main);
         backgroundImagePager = (ViewPager) findViewById(R.id.background_image_pager);
 
@@ -59,7 +59,7 @@ public class CustomBackgroundActivity extends FragmentActivity {
         } catch (IllegalAccessException e) {
             Log.e("scroller", e.getMessage());
         }
-         handler = new Handler();
+        handler = new Handler();
     }
 
     @Override
@@ -84,14 +84,14 @@ public class CustomBackgroundActivity extends FragmentActivity {
                     if (currentBackgroundIndex == imageSlides.size() - 1) {
                         currentBackgroundIndex = 0;
                         backgroundImagePager.setCurrentItem(currentBackgroundIndex++, false);
-                    }
-                    else {
+                    } else {
                         backgroundImagePager.setCurrentItem(currentBackgroundIndex++, true);
                     }
                 }
             };
 
             swipeTimer = new Timer();
+
             swipeTimer.schedule(new TimerTask() {
 
                 @Override
@@ -100,7 +100,6 @@ public class CustomBackgroundActivity extends FragmentActivity {
                 }
             }, 100, FixedSpeedScroller.SCROLL_PERIOD_MILLI);
         }
-
     }
 
     @Override
