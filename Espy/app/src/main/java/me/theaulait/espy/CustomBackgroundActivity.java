@@ -4,9 +4,14 @@ import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -24,9 +29,10 @@ public class CustomBackgroundActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         setContentView(R.layout.activity_main);
         backgroundImagePager = (ViewPager) findViewById(R.id.background_image_pager);
+
         imageViewerAdapter = new ImageViewerAdapter(this);
         backgroundImagePager.setAdapter(imageViewerAdapter);
 
@@ -39,7 +45,21 @@ public class CustomBackgroundActivity extends FragmentActivity {
 
         imageViewerAdapter.setImageResources(imageSlides);
 
-         handler = new Handler();
+        try {
+            Interpolator sInterpolator = new DecelerateInterpolator();
+            Field mScroller = ViewPager.class.getDeclaredField("mScroller");
+            mScroller.setAccessible(true);
+            FixedSpeedScroller scroller = new FixedSpeedScroller(backgroundImagePager.getContext(), sInterpolator);
+            // scroller.setFixedDuration(5000);
+            mScroller.set(backgroundImagePager, scroller);
+        } catch (NoSuchFieldException e) {
+            Log.e("scroller", e.getMessage());
+        } catch (IllegalArgumentException e) {
+            Log.e("scroller", e.getMessage());
+        } catch (IllegalAccessException e) {
+            Log.e("scroller", e.getMessage());
+        }
+        handler = new Handler();
     }
 
     @Override
@@ -63,21 +83,23 @@ public class CustomBackgroundActivity extends FragmentActivity {
                 public void run() {
                     if (currentBackgroundIndex == imageSlides.size() - 1) {
                         currentBackgroundIndex = 0;
+                        backgroundImagePager.setCurrentItem(currentBackgroundIndex++, false);
+                    } else {
+                        backgroundImagePager.setCurrentItem(currentBackgroundIndex++, true);
                     }
-                    backgroundImagePager.setCurrentItem(currentBackgroundIndex++, true);
                 }
             };
 
             swipeTimer = new Timer();
+
             swipeTimer.schedule(new TimerTask() {
 
                 @Override
                 public void run() {
                     handler.post(slideBackgroundImage);
                 }
-            }, 1000, 3000);
+            }, 100, FixedSpeedScroller.SCROLL_PERIOD_MILLI);
         }
-
     }
 
     @Override

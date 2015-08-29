@@ -14,14 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:background="#ffaaaa" />
+        android:background="#ffffff"/>
 
     <LinearLayout
         android:id="@+id/userLayoutInfo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:background="#916CCECB"
+        android:background="#df6CCECB"
         android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
